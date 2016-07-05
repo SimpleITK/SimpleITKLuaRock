@@ -17,6 +17,9 @@ dependencies = {
 }
 build    = {
     type = 'cmake',
+    modules = {
+        SimpleITK = "SimpleITK-build/Wrapping/Lua/lib/SimpleITK.so",
+    },
     variables = {
         INSTALL_CMOD      = "$(LIBDIR)",
         CMAKE_BUILD_TYPE  = "$(CMAKE_BUILD_TYPE)",
