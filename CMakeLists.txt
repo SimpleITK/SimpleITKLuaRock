@@ -47,15 +47,12 @@ include(ExternalProject)
       -DWRAP_R:BOOL=OFF
     #
     #INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
-    INSTALL_COMMAND ""
+    INSTALL_COMMAND "cp ${CMAKE_BINARY_DIR}/SimpleITK-build/Wrapping/Lua/SimpleITK.so ${INSTALL_CMOD}"
     #
     DEPENDS SimpleITK-download ${${proj}_DEPENDENCIES}
     )
   set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build)
 
-  install ( TARGETS ${CMAKE_BINARY_DIR}/SimpleITK-build/Wrapping/Lua/SimpleITK.so
-    DESTINATION ${INSTALL_CMOD}
-    )
     
   set(_lib_subdir lib)
   if(WIN32)
