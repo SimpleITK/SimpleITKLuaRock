@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 
 set(proj SimpleITK)
 
+set( ENV{MAKEFLAGS} "-j80" )
+
 include(ExternalProject)
 
 
