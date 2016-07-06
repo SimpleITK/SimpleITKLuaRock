@@ -31,7 +31,7 @@ include(ExternalProject)
     BINARY_DIR ${EP_BINARY_DIR}
     INSTALL_DIR ${EP_INSTALL_DIR}
     DOWNLOAD_COMMAND ""
-    UPDATE_COMMAND git fetch http://review.source.kitware.com/SimpleITK refs/changes/65/21265/1 && git checkout FETCH_HEAD
+    UPDATE_COMMAND ""
     CMAKE_CACHE_ARGS
     -DBUILD_EXAMPLES:BOOL=OFF
       -DBUILD_TESTING:BOOL=OFF
