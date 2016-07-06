@@ -53,6 +53,10 @@ include(ExternalProject)
     )
   set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build)
 
+  add_custom_target( install
+    COMMAND cp ${CMAKE_BINARY_DIR}/SimpleITK-build/Wrapping/Lua/SimpleITK.so ${INSTALL_CMOD}
+    )
+    
   set(_lib_subdir lib)
   if(WIN32)
     set(_lib_subdir bin)
