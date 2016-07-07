@@ -57,7 +57,7 @@ include(ExternalProject)
     DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
     )
 
-install( TARGET ${SWIG_MODULE_SimpleITKLuaModule_TARGET_NAME}
+install( TARGETS ${SWIG_MODULE_SimpleITKLuaModule_TARGET_NAME}
   DESTINATION ${INSTALL_CMOD}
   )
 
