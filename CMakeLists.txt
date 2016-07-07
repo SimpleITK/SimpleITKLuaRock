@@ -31,7 +31,7 @@ include(ExternalProject)
     BUILD_COMMAND ""
     )
 
-  set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build)
+  set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build)
 
   ExternalProject_add(${proj}
     ${${proj}_EP_ARGS}
