@@ -6,6 +6,7 @@ set(proj SimpleITKSuperbuild)
 
 set( ENV{MAKEFLAGS} "-j80" )
 set(CMAKE_VERBOSE_MAKEFILE ON)
+set(LUA_SIMPLE_ITK_VERSION "1.0-0")
 
 include(ExternalProject)
 
@@ -57,9 +58,17 @@ include(ExternalProject)
     DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
     )
 
-install( TARGETS ${SWIG_MODULE_SimpleITKLuaModule_TARGET_NAME}
-  DESTINATION ${INSTALL_CMOD}
-  )
+  if (DEFINED INSTALL_CMOD)
+    set( INSTALL_DEST ${INSTALL_CMOD} )
+  else ()
+    set( INSTALL_DEST ${CMAKE_INSTALL_PREFIX}/lib/luarocks/rocks/simpleitk/${LUA_SIMPLEITK_VERSION} )
+  endif ()
+
+  message("Holla")
+  message("${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so")
+  install( FILES ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so
+    DESTINATION ${INSTALL_DEST}
+    )
 
     
   set(_lib_subdir lib)
