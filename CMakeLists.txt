@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.3)
 
-set(proj SimpleITK)
+project(SimpleITKLuaRockspec)
+
+set(proj SimpleITKSuperbuild)
 
 set( ENV{MAKEFLAGS} "-j80" )
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -19,7 +21,7 @@ include(ExternalProject)
   # A separate project is used to download, so that the SuperBuild
   # subdirectory can be use for SimpleITK's SuperBuild to build
   # required Lua, GTest etc. dependencies not in Slicer SuperBuild
-  ExternalProject_add(SimpleITK-download
+  ExternalProject_add(${proj}-download
     SOURCE_DIR ${EP_SOURCE_DIR}
     GIT_REPOSITORY ${SimpleITK_REPOSITORY}
     GIT_TAG ${SimpleITK_GIT_TAG}
@@ -28,7 +30,9 @@ include(ExternalProject)
     BUILD_COMMAND ""
     )
 
-  ExternalProject_add(SimpleITK
+  set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build)
+
+  ExternalProject_add(${proj}
     ${${proj}_EP_ARGS}
     SOURCE_DIR ${EP_SOURCE_DIR}/SuperBuild
     BINARY_DIR ${EP_BINARY_DIR}
@@ -48,11 +52,14 @@ include(ExternalProject)
       -DWRAP_R:BOOL=OFF
     #
     #INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
-    INSTALL_COMMAND install -D ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build/Wrapping/Lua/lib/SimpleITK.so ${INSTALL_CMOD}/SimpleITK.so
-
-    DEPENDS SimpleITK-download ${${proj}_DEPENDENCIES}
+    #INSTALL_COMMAND install -D ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so ${INSTALL_CMOD}/SimpleITK.so
+    INSTALL_COMMAND ""
+    DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
     )
-  set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/SimpleITK-build/SimpleITK-build)
+
+install( TARGET ${SWIG_MODULE_SimpleITKLuaModule_TARGET_NAME}
+  DESTINATION ${INSTALL_CMOD}
+  )
 
     
   set(_lib_subdir lib)
