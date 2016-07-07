@@ -57,7 +57,7 @@ include(ExternalProject)
     DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
     )
 
-install( TARGETS ${SWIG_MODULE_SimpleITKLuaModule_TARGET_NAME}
+install( TARGETS ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so
   DESTINATION ${INSTALL_CMOD}
   )
 
