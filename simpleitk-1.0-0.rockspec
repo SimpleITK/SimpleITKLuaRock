@@ -9,7 +9,7 @@ source  = {
 description = {
     summary  = "A Lua binding to SimpleITK.",
     detailed = '',
-    homepage = 'http://github.com/SimpleITK/SimpleITK',
+    homepage = 'https://github.com/SimpleITK/SimpleITKLuaRock',
     license  = 'BSD',
 }
 dependencies = {
