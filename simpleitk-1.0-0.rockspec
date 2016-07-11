@@ -3,7 +3,7 @@
 package = 'simpleitk'
 version = '1.0-0'
 source  = {
-    url    = 'git://github.com/dave3d/lua-simpleitk.git',
+    url    = 'https://github.com/SimpleITK/SimpleITKLuaRock.git',
     branch = 'master',
 }
 description = {
