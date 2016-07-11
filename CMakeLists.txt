@@ -52,6 +52,7 @@ include(ExternalProject)
       -DWRAP_CSHARP:BOOL=OFF
       -DWRAP_R:BOOL=OFF
       -DSimpleITK_BUILD_STRIP:BOOL=ON
+      -DSimpleITK_BUILD_DISTRIBUTE:BOOL=ON
     #
     #INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
     #INSTALL_COMMAND install -D ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so ${INSTALL_CMOD}/SimpleITK.so
