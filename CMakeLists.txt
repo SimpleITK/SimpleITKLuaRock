@@ -31,7 +31,6 @@ include(ExternalProject)
     BUILD_COMMAND ""
     )
 
-  set(SimpleITK_DIR ${CMAKE_BINARY_DIR}/${proj}-build/SimpleITK-build)
 
   ExternalProject_add(${proj}
     ${${proj}_EP_ARGS}
@@ -53,9 +52,6 @@ include(ExternalProject)
       -DWRAP_R:BOOL=OFF
       -DSimpleITK_BUILD_STRIP:BOOL=ON
       -DSimpleITK_BUILD_DISTRIBUTE:BOOL=ON
-    #
-    #INSTALL_COMMAND ${CMAKE_COMMAND} -P ${_install_script}
-    #INSTALL_COMMAND install -D ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so ${INSTALL_CMOD}/SimpleITK.so
     INSTALL_COMMAND ""
     DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
     )
@@ -66,10 +62,14 @@ include(ExternalProject)
     set( INSTALL_DEST ${CMAKE_INSTALL_PREFIX}/lib/luarocks/rocks/simpleitk/${LUA_SIMPLEITK_VERSION} )
   endif ()
 
-  message("Holla")
-  message("${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so")
-  install( FILES ${SimpleITK_DIR}/Wrapping/Lua/lib/SimpleITK.so
+  set(SITK_BUILD_DIR ${CMAKE_BINARY_DIR}/${proj}-build/SimpleITK-build)
+  install( FILES ${SITK_BUILD_DIR}/Wrapping/Lua/lib/SimpleITK.so
     DESTINATION ${INSTALL_DEST}
+    )
+
+  set(SITK_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj})
+  install( FILES ${SITK_SOURCE_DIR}/LICENSE ${SITK_SOURCE_DIR}/NOTICE ${SITK_SOURCE_DIR}/Readme.md
+    DESTINATION ${CMAKE_SOURCE_DIR}/doc
     )
 
     
