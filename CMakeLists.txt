@@ -4,7 +4,12 @@ project(SimpleITKLuaRockspec)
 
 set(proj SimpleITKSuperbuild)
 
-set( ENV{MAKEFLAGS} "-j80" )
+include(ProcessorCount)
+ProcessorCount(NPROC)
+if (NOT NPROC EQUAL 0)
+  set( ENV{MAKEFLAGS} "-j${NPROC}" )
+endif()
+
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(LUA_SIMPLE_ITK_VERSION "1.0-0")
 
