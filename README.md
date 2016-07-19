@@ -8,7 +8,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 SimpleITK is a simplified layer on top of the Insight Segmentation and Registration Toolkit (ITK).  
 
-Be warned that building SimpleITK requires a fairly powerful, multicore machine.  This SimpleITK rockspec uses luarock's "cmake" build type.  Therefor it will only build on Linux or Mac OS X systems.
+Be warned that building SimpleITK requires a fairly powerful, multicore machine.  This SimpleITK rockspec uses luarock's "cmake" build type.  Therefore it will only build on Linux or Mac OS X systems.
 
 For more information about SimpleITK, visit http://simpleitk.org
 
