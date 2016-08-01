@@ -1,7 +1,7 @@
 #!/usr/bin/env lua
 
 package = 'simpleitk'
-version = '1.0-0'
+version = '0.10-0'
 source  = {
     url    = 'https://github.com/SimpleITK/SimpleITKLuaRock.git',
     branch = 'master',

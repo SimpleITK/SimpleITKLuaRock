@@ -13,13 +13,13 @@ if (NOT NPROC EQUAL 0)
 endif()
 
 
-set(LUA_SIMPLE_ITK_VERSION "1.0-0")
+set(LUA_SIMPLE_ITK_VERSION "0.10-0")
 
 include(ExternalProject)
 
 
 set( SimpleITK_REPOSITORY http://itk.org/SimpleITK.git )
-#  set(SimpleITK_GIT_TAG be2a0912031121d0de50e7bfc2ac32aed8169809) # 0.10.0.dev199
+set(SimpleITK_GIT_TAG v0.10.0)
 
 set( EP_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj} )
 set( EP_BINARY_DIR ${CMAKE_BINARY_DIR}/${proj}-build )
