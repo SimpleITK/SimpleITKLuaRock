@@ -3,7 +3,7 @@
 package = 'simpleitk'
 version = '0.10-0'
 source  = {
-    url    = 'https://github.com/SimpleITK/SimpleITKLuaRock/archive/master.zip',
+    url    = 'https://github.com/SimpleITK/SimpleITKLuaRock/archive/v0.10.zip',
     branch = 'master',
 }
 description = {
