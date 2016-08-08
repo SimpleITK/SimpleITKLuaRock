@@ -4,7 +4,7 @@ package = 'simpleitk'
 version = '0.10-0'
 source  = {
     url    = 'https://github.com/SimpleITK/SimpleITKLuaRock/archive/v0.10.zip',
-    branch = 'SimpleITKLuaRock-0.10',
+    dir = 'SimpleITKLuaRock-0.10',
 }
 description = {
     summary  = "A Lua binding to SimpleITK.",
