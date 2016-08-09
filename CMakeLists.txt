@@ -87,7 +87,7 @@ install( FILES ${SITK_SOURCE_DIR}/LICENSE ${SITK_SOURCE_DIR}/NOTICE ${SITK_SOURC
 
 # copy the SimpleDerivative.lua example file from SimpleITK into this directory
 install( FILES ${SITK_SOURCE_DIR}/Examples/Lua/SimpleDerivative.lua
-  DESTINATION ${CMAKE_SOURCE_DIR}
+  DESTINATION ${CMAKE_SOURCE_DIR}/examples
   )
 
     
