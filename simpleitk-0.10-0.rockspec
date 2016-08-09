@@ -25,5 +25,5 @@ build    = {
         CMAKE_BUILD_TYPE  = "$(CMAKE_BUILD_TYPE)",
         ["CFLAGS:STRING"] = "$(CFLAGS)",
     },
-    copy_directories = { "doc" }
+    copy_directories = { "doc", "examples" }
 }
