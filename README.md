@@ -18,7 +18,7 @@ When building the module, an example progam is installed into the SimpleITK rock
 
 The program demonstrates a basic progam that uses SimpleITK to create an image of a Gaussian, and then performs some operations on that image.  First it applies the first derivative in the X direction on the gaussian, then it rescales the pixel intensities and converts the pixel types from float32 to uint8.  Finally the result is written out as a PNG file, and the image is displayed with the [Show function](https://itk.org/SimpleITKDoxygen/html/namespaceitk_1_1simple.html#ac8416e6e7f02dedfe8373b83dbea411d), which invokes [Fiji/ImageJ](http://fiji.sc).
 ## Miscellaneous
-Written by [David T. Chen](https://lhncbc.nlm.nih.gov/personnel/david-chen) from the National Library of Medicine, dchen@mail.nih.gov. It is covered by the Apache License, Version 2.0:
+Written by [David T. Chen](https://lhncbc.nlm.nih.gov/personnel/david-chen) from the [National Library of Medicine](https://www.nlm.nih.gov), dchen@mail.nih.gov. It is covered by the Apache License, Version 2.0:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
