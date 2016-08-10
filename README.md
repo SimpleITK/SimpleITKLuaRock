@@ -1,6 +1,6 @@
 # SimpleITKLuaRock
 
-This package is an initial attempt to create a rockspec file that will build and install a SimpleITK module for Lua via [LuaRocks](https://luarocks.org), a package manager for Lua modules.  [SimpleITK](http://www.simpleitk.org) is a simplified programming layer on top of the [Insight Segmentation and Registration Toolkit](https://itk.org) (ITK).
+This package is an initial attempt to create a rockspec file that will build and install a SimpleITK module for Lua via [LuaRocks](https://luarocks.org), a package manager for Lua modules.  [SimpleITK](http://www.simpleitk.org) is a simplified programming layer on top of the [Insight Segmentation and Registration Toolkit](https://itk.org) (ITK).  ITK is an open-source, cross-platform system that provides developers with an extensive suite of software tools for image analysis.
 
 ## Building the SimpleITK Lua module
 Building the module requires Lua v5.1.5, LuaRocks v2.3 and [CMake](https://cmake.org) v3.  Because SimpleITK is built as a CMake-type build in LuaRocks, this module will only build on Linux and OS X.  Currently cmake builds are not supported on Windows in Luarocks.
