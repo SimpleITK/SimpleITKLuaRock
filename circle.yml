@@ -28,5 +28,5 @@ test:
     pre:
         - luarocks make --local simpleitk-0.10-0.rockspec
     override:
-        - find ${BUILD_DIR} -name SimpleITK.so
+        - find ${BUILD_DIR} -name SimpleITK.so:
             parallel: true
