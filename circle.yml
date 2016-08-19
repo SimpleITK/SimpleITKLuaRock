@@ -12,6 +12,8 @@ machine:
         CXX: "distcc g++"
         MAKEFLAGS: "-j${MAKE_J}"
         SITK_NOSHOW: "1"
+        LUA_CPATH: SimpleITKSuperbuild-build/SimpleITK-build/Wrapping/Lua/lib/SimpleITK.so
+
     post:
         - sudo apt-get remove cmake && sudo apt-get install swig distcc lua5.1 luarocks
         - sudo sed -i.bak s/STARTDISTCC=\"false\"/STARTDISTCC=\"true\"/g /etc/default/distcc && sudo /etc/init.d/distcc start
