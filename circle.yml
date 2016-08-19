@@ -12,7 +12,6 @@ machine:
         CXX: "distcc g++"
         MAKEFLAGS: "-j${MAKE_J}"
         SITK_NOSHOW: "1"
-        LUA_CPATH: SimpleITKSuperbuild-build/SimpleITK-build/Wrapping/Lua/lib/SimpleITK.so
 
     post:
         - sudo apt-get remove cmake && sudo apt-get install swig distcc lua5.1 luarocks
@@ -35,5 +34,6 @@ test:
     override:
         - find . -name SimpleITK.so:
             parallel: true
+        - sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock
         - lua examples/SimpleDerivative.lua
         - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
