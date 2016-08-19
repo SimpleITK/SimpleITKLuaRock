@@ -34,5 +34,4 @@ test:
     override:
         - find . -name SimpleITK.so:
             parallel: true
-        - lua examples/SimpleDerivative.lua:
-            parallel: true
+        - lua examples/SimpleDerivative.lua
