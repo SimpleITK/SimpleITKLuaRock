@@ -37,3 +37,4 @@ test:
         - sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock
         - lua examples/SimpleDerivative.lua
         - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
+        - mv sitk-lua-test.png $CIRCLE_ARTIFACTS
