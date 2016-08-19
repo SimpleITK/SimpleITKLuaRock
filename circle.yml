@@ -1,0 +1,40 @@
+
+machine:
+    environment:
+        SRC_DIR: ${HOME}/SimpleITKLuaRocks
+        BUILD_DIR: ${SRC_DIR}/build.luarocks
+        ExternalData_OBJECT_STORES: ${HOME}/.ExternalData
+        CMAKE_DOWNLOAD_FILE: cmake-3.6.0-Linux-x86_64.sh
+        DISTCC_TCP_CORK: "0"
+        DISTCC_DIR: ${HOME}/.distcc
+        MAKE_J: $(expr $CIRCLE_NODE_TOTAL \* 3 + 1)
+        CC: "distcc gcc"
+        CXX: "distcc g++"
+        MAKEFLAGS: "-j${MAKE_J}"
+        SITK_NOSHOW: "1"
+
+    post:
+        - sudo apt-get remove cmake && sudo apt-get install swig distcc lua5.1 luarocks
+        - sudo sed -i.bak s/STARTDISTCC=\"false\"/STARTDISTCC=\"true\"/g /etc/default/distcc && sudo /etc/init.d/distcc start
+        - mkdir -p "${ExternalData_OBJECT_STORES}"
+        - cd ${ExternalData_OBJECT_STORES} && if [[ ! -e ${CMAKE_DOWNLOAD_FILE} ]]; then curl -sSO https://cmake.org/files/v3.6/${CMAKE_DOWNLOAD_FILE}; fi
+        - echo "y\n" | sudo bash "${ExternalData_OBJECT_STORES}/${CMAKE_DOWNLOAD_FILE}" --prefix=/usr/local --exclude-subdir
+
+dependencies:
+    cache_directories:
+        - "~/.ExternalData"
+    post:
+        - mkdir -p "${DISTCC_DIR}" && printf -- "--randomize localhost/2 --localslots=1\n" > "${DISTCC_DIR}/hosts" && for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do printf "ubuntu@node$i/2\n" >> "${DISTCC_DIR}/hosts"; done
+        - mkdir -p ${BUILD_DIR}
+
+
+test:
+    pre:
+        - luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec
+    override:
+        - find . -name SimpleITK.so:
+            parallel: true
+        - sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock
+        - lua examples/SimpleDerivative.lua
+        - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
+        - mv sitk-lua-test.png $CIRCLE_ARTIFACTS
