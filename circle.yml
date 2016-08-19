@@ -24,7 +24,7 @@ dependencies:
     cache_directories:
         - "~/.ExternalData"
     post:
-        - mkdir -p "${DISTCC_DIR}" && printf -- "--randomize localhost/2 --localslots=2\n" > "${DISTCC_DIR}/hosts" && for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do printf "ubuntu@node$i/3\n" >> "${DISTCC_DIR}/hosts"; done
+        - mkdir -p "${DISTCC_DIR}" && printf -- "--randomize localhost/2 --localslots=1\n" > "${DISTCC_DIR}/hosts" && for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do printf "ubuntu@node$i/2\n" >> "${DISTCC_DIR}/hosts"; done
         - mkdir -p ${BUILD_DIR}
 
 
