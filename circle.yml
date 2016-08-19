@@ -28,10 +28,12 @@ dependencies:
         - mkdir -p "${DISTCC_DIR}" && printf -- "--randomize localhost/2 --localslots=2\n" > "${DISTCC_DIR}/hosts" && for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do printf "ubuntu@node$i/3\n" >> "${DISTCC_DIR}/hosts"; done
         - mkdir -p ${BUILD_DIR}
 
+
 test:
     pre:
-        - luarocks make --local simpleitk-0.10-0.rockspec
+        - luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec
     override:
         - find . -name SimpleITK.so:
             parallel: true
         - lua examples/SimpleDerivative.lua
+        - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
