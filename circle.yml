@@ -34,7 +34,7 @@ test:
     override:
         - find . -name SimpleITK.so:
             parallel: true
-        - sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock
-        - lua examples/SimpleDerivative.lua
-        - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
-        - mv sitk-lua-test.png $CIRCLE_ARTIFACTS
+        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock; fi
+        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then lua examples/SimpleDerivative.lua; fi
+        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS; fi
+        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then mv sitk-lua-test.png $CIRCLE_ARTIFACTS; fi
