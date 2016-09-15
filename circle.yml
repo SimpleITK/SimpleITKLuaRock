@@ -30,11 +30,11 @@ dependencies:
 
 test:
     pre:
-        - luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec; fi
     override:
         - find . -name SimpleITK.so:
             parallel: true
-        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock; fi
-        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then lua examples/SimpleDerivative.lua; fi
-        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS; fi
-        - if [ $CIRCLE_NODE_INDEX -ne 0 ]; then mv sitk-lua-test.png $CIRCLE_ARTIFACTS; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then lua examples/SimpleDerivative.lua; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then cp simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then cp sitk-lua-test.png $CIRCLE_ARTIFACTS; fi
