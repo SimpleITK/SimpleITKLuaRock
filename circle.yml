@@ -25,16 +25,17 @@ dependencies:
         - "~/.ExternalData"
     post:
         - mkdir -p "${DISTCC_DIR}" && printf -- "--randomize localhost/2 --localslots=1\n" > "${DISTCC_DIR}/hosts" && for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do printf "ubuntu@node$i/2\n" >> "${DISTCC_DIR}/hosts"; done
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then mkdir -p .ssh/tmp && printf -- "Host *\nControlMaster auto\nControlPath ~/.ssh/tmp/master-%%r@%%h:%%p\n" >> .ssh/config; for ((i=1;i<CIRCLE_NODE_TOTAL;i++)); do ssh -fMN ubuntu@node$i; done; fi
         - mkdir -p ${BUILD_DIR}
 
 
 test:
     pre:
-        - luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then luarocks make --local --pack-binary-rock simpleitk-0.10-0.rockspec; fi
     override:
         - find . -name SimpleITK.so:
             parallel: true
-        - sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock
-        - lua examples/SimpleDerivative.lua
-        - mv simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS
-        - mv sitk-lua-test.png $CIRCLE_ARTIFACTS
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then sudo luarocks install simpleitk-0.10-0.linux-x86_64.rock; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then lua examples/SimpleDerivative.lua; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then cp simpleitk-0.10-0.linux-x86_64.rock $CIRCLE_ARTIFACTS; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then cp sitk-lua-test.png $CIRCLE_ARTIFACTS; fi
