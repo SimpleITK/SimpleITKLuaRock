@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.3)
 
 project(SimpleITKLuaRockspec)
@@ -13,13 +12,13 @@ if (NOT NPROC EQUAL 0)
 endif()
 
 
-set(LUA_SIMPLE_ITK_VERSION "0.10-0")
+set(LUA_SIMPLE_ITK_VERSION "1.0rc1")
 
 include(ExternalProject)
 
 
 set( SimpleITK_REPOSITORY http://itk.org/SimpleITK.git )
-set(SimpleITK_GIT_TAG v0.10.0)
+set(SimpleITK_GIT_TAG v1.0rc1)
 
 set( EP_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj} )
 set( EP_BINARY_DIR ${CMAKE_BINARY_DIR}/${proj}-build )
@@ -52,13 +51,8 @@ ExternalProject_add( ${proj}
     -DBUILD_EXAMPLES:BOOL=OFF
     -DBUILD_TESTING:BOOL=OFF
     -DBUILD_DOXYGEN:BOOL=OFF
-    -DWRAP_PYTHON:BOOL=OFF
-    -DWRAP_TCL:BOOL=OFF
-    -DWRAP_JAVA:BOOL=OFF
-    -DWRAP_RUBY:BOOL=OFF
+    -DWRAP_DEFAULT:BOOL=OFF
     -DWRAP_LUA:BOOL=ON
-    -DWRAP_CSHARP:BOOL=OFF
-    -DWRAP_R:BOOL=OFF
     -DSimpleITK_BUILD_STRIP:BOOL=ON
     -DSimpleITK_BUILD_DISTRIBUTE:BOOL=ON
   INSTALL_COMMAND ""
@@ -71,7 +65,7 @@ else ()
   set( INSTALL_DEST ${CMAKE_INSTALL_PREFIX}/lib/luarocks/rocks/simpleitk/${LUA_SIMPLEITK_VERSION} )
 endif ()
 
-  
+
 # install the SimpleITK shared library.
 set( SITK_BUILD_DIR ${CMAKE_BINARY_DIR}/${proj}-build/SimpleITK-build )
 install( FILES ${SITK_BUILD_DIR}/Wrapping/Lua/lib/SimpleITK.so
@@ -90,7 +84,7 @@ install( FILES ${SITK_SOURCE_DIR}/Examples/Lua/SimpleDerivative.lua
   DESTINATION ${CMAKE_SOURCE_DIR}/examples
   )
 
-    
+
 set(_lib_subdir lib)
 if(WIN32)
   set(_lib_subdir bin)
