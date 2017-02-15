@@ -12,7 +12,7 @@ Building SimpleITK requires a sizeable amount of computing power.  We recommend 
 ```  
 Build the SimpleITK Lua module with the following command:
 ```
-  luarocks install simpleitk-0.10-0.rockspec
+  luarocks install simpleitk-1.0-0.rockspec
 ```
 ## SimpleDerivative.lua example
 When building the module, an example progam is installed into the SimpleITK rock, [SimpleDerivative.lua](https://github.com/SimpleITK/SimpleITK/blob/master/Examples/Lua/SimpleDerivative.lua).  It is copied from the [SimpleITK repository](https://github.com/SimpleITK/SimpleITK) .
