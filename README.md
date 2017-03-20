@@ -18,6 +18,11 @@ Build the SimpleITK Lua module with the following command:
 When building the module, an example progam is installed into the SimpleITK rock, [SimpleDerivative.lua](https://github.com/SimpleITK/SimpleITK/blob/master/Examples/Lua/SimpleDerivative.lua).  It is copied from the [SimpleITK repository](https://github.com/SimpleITK/SimpleITK) .
 
 The program demonstrates a basic progam that uses SimpleITK to create an image of a Gaussian, and then performs some operations on that image.  First it applies the first derivative in the X direction on the gaussian, then it rescales the pixel intensities and converts the pixel types from float32 to uint8.  Finally the result is written out as a PNG file, and the image is displayed with the [Show function](https://itk.org/SimpleITKDoxygen/html/namespaceitk_1_1simple.html#ac8416e6e7f02dedfe8373b83dbea411d), which invokes [Fiji/ImageJ](http://fiji.sc).
+
+## Custom builds
+The rockspec in this package is tied to a particular version of SimpleITK.  So simpleitk-1.0-0.rockspec will build SimpleITK v1.0.
+To build a custom version of SimpleITK consult the [Building a Custom Version of the SimpleITK Luarock](https://github.com/SimpleITK/SimpleITKLuaRock/wiki/Building-a-custom-version-of-a-SimpleITK-rock) page.
+
 ## Miscellaneous
 Written by [David T. Chen](https://lhncbc.nlm.nih.gov/personnel/david-chen) from the [National Library of Medicine](https://www.nlm.nih.gov), dchen@mail.nih.gov. It is covered by the Apache License, Version 2.0:
 
