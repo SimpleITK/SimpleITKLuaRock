@@ -24,8 +24,6 @@ machine:
         - echo "y\n" | sudo bash "${ExternalData_OBJECT_STORES}/${CMAKE_DOWNLOAD_FILE}" --prefix=/usr/local --exclude-subdir
         - export PATH="${PATH}:/usr/local/bin"
         - which swig; swig -version
-        - apt list --installed|grep swig
-        - ls -l /usr/bin/swig*
 
 
 dependencies:
