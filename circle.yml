@@ -15,7 +15,7 @@ machine:
         - sudo apt-get remove cmake swig && sudo apt-get install libpcre3 distcc lua5.1 luarocks
         - wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
         - tar -xzf swig-3.0.12.tar.gz
-        - cd swig-3.0.12; ./configure; make; sudo make install
+        - cd swig-3.0.12; ./configure --prefix=/usr; make; sudo make install
 
         - export CC="distcc gcc"; export CXX="distcc g++"
         - sudo sed -i.bak s/STARTDISTCC=\"false\"/STARTDISTCC=\"true\"/g /etc/default/distcc && sudo /etc/init.d/distcc start
