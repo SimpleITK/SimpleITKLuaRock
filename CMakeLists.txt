@@ -61,6 +61,8 @@ ExternalProject_add( ${proj}
     -DWRAP_R:BOOL=OFF
     -DSimpleITK_BUILD_STRIP:BOOL=ON
     -DSimpleITK_BUILD_DISTRIBUTE:BOOL=ON
+    -DUSE_SYSTEM_SWIG:BOOL=ON
+    -DUSE_SYSTEM_LUA:BOOL=ON
   INSTALL_COMMAND ""
   DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
   )
