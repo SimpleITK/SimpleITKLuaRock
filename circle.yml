@@ -12,7 +12,7 @@ machine:
         SITK_NOSHOW: "1"
 
     post:
-        - sudo apt-get remove cmake swig && sudo apt-get install libpcre3 distcc lua5.1 luarocks
+        - sudo apt-get remove cmake swig2.0 && sudo apt-get install libpcre3 distcc lua5.1 luarocks
         - wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
         - tar -xzf swig-3.0.12.tar.gz
         - cd swig-3.0.12; ./configure --prefix=/usr; make; sudo make install
