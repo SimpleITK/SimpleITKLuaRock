@@ -38,6 +38,10 @@ ExternalProject_add( ${proj}-download
   BUILD_COMMAND ""
   )
 
+if ( $ENV{CMAKE_USE_DISTCC} )
+   set(C_LAUNCHER "-DCMAKE_C_COMPILER_LAUNCHER:STRING=distcc")
+   set(CXX_LAUNCHER "-DCMAKE_CXX_COMPILER_LAUNCHER:STRING=distcc")
+endif ()
 
 # The actual SimpleITK Superbuild project that build all the tools
 # needed (GTest, PCRE, Swig, Lua & GTest) and then SimpleITK itself.
@@ -52,15 +56,12 @@ ExternalProject_add( ${proj}
     -DBUILD_EXAMPLES:BOOL=OFF
     -DBUILD_TESTING:BOOL=OFF
     -DBUILD_DOXYGEN:BOOL=OFF
-    -DWRAP_PYTHON:BOOL=OFF
-    -DWRAP_TCL:BOOL=OFF
-    -DWRAP_JAVA:BOOL=OFF
-    -DWRAP_RUBY:BOOL=OFF
+    -DWRAP_DEFAULT:BOOL=OFF
     -DWRAP_LUA:BOOL=ON
-    -DWRAP_CSHARP:BOOL=OFF
-    -DWRAP_R:BOOL=OFF
     -DSimpleITK_BUILD_STRIP:BOOL=ON
     -DSimpleITK_BUILD_DISTRIBUTE:BOOL=ON
+    ${C_LAUNCHER}
+    ${CXX_LAUNCHER}
   INSTALL_COMMAND ""
   DEPENDS ${proj}-download ${${proj}_DEPENDENCIES}
   )
