@@ -19,7 +19,7 @@ include(ExternalProject)
 
 
 set( SimpleITK_REPOSITORY http://itk.org/SimpleITK.git )
-set(SimpleITK_GIT_TAG v1.0rc1)
+set(SimpleITK_GIT_TAG v1.0.0)
 
 set( EP_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj} )
 set( EP_BINARY_DIR ${CMAKE_BINARY_DIR}/${proj}-build )
