@@ -24,8 +24,7 @@ build    = {
         INSTALL_CMOD      = "$(LIBDIR)",
         CMAKE_BUILD_TYPE  = "$(CMAKE_BUILD_TYPE)",
         ["CFLAGS:STRING"] = "$(CFLAGS)",
-        LUA_SIMPLE_ITK_VERSION = "1.0.1-0",
-        SimpleITK_GIT_TAG = "v1.0.1"
+        SimpleITK_VERSION = "1.0.1"
     },
     copy_directories = { "doc", "examples" }
 }
