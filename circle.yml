@@ -41,7 +41,7 @@ dependencies:
 
 test:
     pre:
-        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0-0.rockspec  > simpleitk-x.0-0.rockspec; fi
+        - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0.1-0.rockspec  > simpleitk-x.0-0.rockspec; fi
         - if [ $CIRCLE_NODE_INDEX -eq 0 ]; then luarocks make --local --pack-binary-rock simpleitk-x.0-0.rockspec; fi
     override:
         - find . -name SimpleITK.so:
