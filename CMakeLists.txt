@@ -18,7 +18,7 @@ if (NOT SimpleITK_VERSION)
   if (NOT BUILD_NUMBER)
     set (BUILD_NUMBER "0")
   endif()
-  set(SimpleITK_GIT_TAG "v${SimpleITK_GIT_TAG}"
+  set(SimpleITK_GIT_TAG "v${SimpleITK_GIT_TAG}")
   set(LUA_SIMPLE_ITK_VERSION "${SimpleITK_VERSION}-${BUILD_NUMBERS}")
 endif()
 
