@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7
+    working_directory: ~/
+    resource_class: large
+    environment:
+      R_LIBS: /home/circleci/Rlibs
+      ExternalData_OBJECT_STORES: /home/circleci/.ExternalData
+    steps:
+      - checkout:
+          path : ~/SimpleITKLuaRock
+      - run:
+          name: System Dependencies
+          command: |
+            sudo apt-get remove cmake swig2.0
+            sudo apt-get install -y lua5.1 luarocks rsync
+            sudo pip install numpy scikit-ci-addons
+            ci_addons circle/install_cmake.py 3.7.2
+      - run:
+          name: Intall Lua Package
+          environment:
+             MAKEFLAGS: "-j5"
+             SITK_NOSHOW: "1"
+          command: |
+             cd ~/SimpleITKLuaRock
+             sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0.1-0.rockspec  > simpleitk-x.0-0.rockspec
+             luarocks make --local --pack-binary-rock simpleitk-x.0-0.rockspec
+             sudo luarocks install simpleitk-x.0-0.linux-x86_64.rock
+             lua examples/SimpleDerivative.lua
