@@ -19,13 +19,22 @@ jobs:
             sudo pip install numpy scikit-ci-addons
             ci_addons circle/install_cmake.py 3.7.2
       - run:
-          name: Intall Lua Package
+          name: Build Lua Package
           environment:
              MAKEFLAGS: "-j5"
-             SITK_NOSHOW: "1"
           command: |
              cd ~/SimpleITKLuaRock
              sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0.1-0.rockspec  > simpleitk-x.0-0.rockspec
              luarocks make --local --pack-binary-rock simpleitk-x.0-0.rockspec
+      - run:
+          name: Install and Test
+          environment:
+             SITK_NOSHOW: "1"
+          command:
+             cd ~/SimpleITKLuaRock
              sudo luarocks install simpleitk-x.0-0.linux-x86_64.rock
              lua examples/SimpleDerivative.lua
+             mkdir /tmp/artifacts
+             cp sitk-lua-test.png /tmp/artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
