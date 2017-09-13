@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Build Lua Package
           environment:
-             MAKEFLAGS: "-j5"
+             MAKEFLAGS: "-j4"
           command: |
              cd ~/SimpleITKLuaRock
              sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0.1-0.rockspec  > simpleitk-x.0-0.rockspec
