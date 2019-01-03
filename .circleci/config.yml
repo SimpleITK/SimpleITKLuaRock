@@ -30,7 +30,7 @@ jobs:
           name: Install and Test
           environment:
              SITK_NOSHOW: "1"
-          command:
+          command: |
              cd ~/SimpleITKLuaRock
              sudo luarocks install simpleitk-x.0-0.linux-x86_64.rock
              lua examples/SimpleDerivative.lua
