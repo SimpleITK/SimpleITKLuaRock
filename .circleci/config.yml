@@ -24,7 +24,7 @@ jobs:
              MAKEFLAGS: "-j4"
           command: |
              cd ~/SimpleITKLuaRock
-             sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.0.1-0.rockspec  > simpleitk-x.0-0.rockspec
+             sed "s/url.*/url = ''/; /dir/d; s/version.*/version = 'x.0-0'/" simpleitk-1.2.0-0.rockspec  > simpleitk-x.0-0.rockspec
              luarocks make --local --pack-binary-rock simpleitk-x.0-0.rockspec
       - run:
           name: Install and Test
