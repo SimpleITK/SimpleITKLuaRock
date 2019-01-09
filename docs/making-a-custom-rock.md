@@ -1,6 +1,4 @@
-.. _making_a_custom_rock:
 
-====================
 Making a custom rock
 ====================
 
