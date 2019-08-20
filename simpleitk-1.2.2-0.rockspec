@@ -1,10 +1,10 @@
 #!/usr/bin/env lua
 
 package = 'simpleitk'
-version = '1.2.0-0'
+version = '1.2.2-0'
 source  = {
     url    = 'https://github.com/SimpleITK/SimpleITKLuaRock/archive/v1.2.0.zip',
-    dir = 'SimpleITKLuaRock-1.2.0',
+    dir = 'SimpleITKLuaRock-1.2.2',
 }
 description = {
     summary  = "A Lua binding to SimpleITK.",
@@ -24,7 +24,7 @@ build    = {
         INSTALL_CMOD      = "$(LIBDIR)",
         CMAKE_BUILD_TYPE  = "$(CMAKE_BUILD_TYPE)",
         ["CFLAGS:STRING"] = "$(CFLAGS)",
-        SimpleITK_VERSION = "1.2.0"
+        SimpleITK_VERSION = "1.2.2"
     },
     copy_directories = { "doc", "examples" }
 }
