@@ -9,10 +9,10 @@ Building the module requires Lua v5.1.5, LuaRocks v2.2 and [CMake](https://cmake
 Building SimpleITK requires a sizeable amount of computing power.  We recommend a multi-core system with a sizable amount of memory.  Also, to facilitate multi-processing, the environment variable MAKEFLAGS should be set to something like "-jN", where N is the number of cores.  For example, on an 8 core system, use the following:
 ```
   export MAKEFLAGS="-j8"
-```  
+```
 Build the SimpleITK Lua module with the following command:
 ```
-  luarocks install simpleitk-1.2-0.rockspec
+  luarocks install simpleitk-1.2.2-0.rockspec
 ```
 ## SimpleDerivative.lua example
 When building the module, an example progam is installed into the SimpleITK rock, [SimpleDerivative.lua](https://github.com/SimpleITK/SimpleITK/blob/master/Examples/Lua/SimpleDerivative.lua).  It is copied from the [SimpleITK repository](https://github.com/SimpleITK/SimpleITK) .
