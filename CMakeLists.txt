@@ -25,7 +25,7 @@ endif()
 include(ExternalProject)
 
 
-set( SimpleITK_REPOSITORY http://itk.org/SimpleITK.git )
+set( SimpleITK_REPOSITORY http://github.com/SimpleITK/SimpleITK.git )
 
 set( EP_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj} )
 set( EP_BINARY_DIR ${CMAKE_BINARY_DIR}/${proj}-build )
