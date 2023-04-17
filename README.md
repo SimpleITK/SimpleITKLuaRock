@@ -1,4 +1,9 @@
 # SimpleITKLuaRock
+
+We are archiving this package because of a lack of interest or usage.  SimpleITK itself remains actively in development,
+and users will continue to be able to build SimpleITK for Lua themselves.
+
+
 [![CircleCI Status](https://circleci.com/gh/SimpleITK/SimpleITKLuaRock.svg?&style=shield&circle-token)](https://circleci.com/gh/SimpleITK/SimpleITKLuaRock)
 
 This package is a rockspec file that will build and install a SimpleITK module for Lua via [LuaRocks](https://luarocks.org), a package manager for Lua modules.  [SimpleITK](http://www.simpleitk.org) is a simplified, open source interface to the [Insight Segmentation and Registration Toolkit](https://itk.org) (ITK).  ITK is an open-source, cross-platform toolkit that provides developers with an extensive suite of software tools for image analysis and is widely used in academia and industry.
